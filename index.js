@@ -11,7 +11,7 @@ app.get("/howdy",(req, res) => {
 
     res.end("Hello Howdy!")
 })
-
-app.listen(8800, ()=>{
+const port = process.env.PORT || 8800
+app.listen(port, ()=>{
     console.log("Connected to backend!");
 });
