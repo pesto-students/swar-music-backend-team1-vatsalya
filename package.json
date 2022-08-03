@@ -1,1 +1,32 @@
 {
+  "name": "swar-music-backend-team1-vatsalya",
+  "version": "1.0.0",
+  "description": "Welcome to Pesto assignments.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pesto-students/swar-music-backend-team1-vatsalya.git"
+  },
+  "author": "Himanshu vansal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pesto-students/swar-music-backend-team1-vatsalya/issues"
+  },
+  "homepage": "https://github.com/pesto-students/swar-music-backend-team1-vatsalya#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.0",
+    "nodemon": "^2.0.19",
+    "package-json-validator": "^0.6.3"
+  },
+    "engines": {
+      "node": ">=0.10.3 <15"
+    }
+  
+}
