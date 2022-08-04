@@ -8,7 +8,7 @@ export const createUser = async(req, res, next) =>{
     }catch(err){
         next(err);
     }
-    res.send("Hello this is endpoint");
+    res.send(savedUser);
 }
 
 export const updateUser = async(req, res, next) =>{

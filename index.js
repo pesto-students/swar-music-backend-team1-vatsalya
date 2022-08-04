@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
 import userrouter from "./routes/UsersRoute.js";
+import authrouter from "./routes/AuthRouter.js";
 
 
 const app = express();
@@ -23,6 +24,7 @@ app.get("/",(req, res) => {
 })
 
 app.use("/api/users",userrouter)
+app.use("/api/auth",authrouter)
 const port = process.env.PORT || 8900
 app.listen(port, ()=>{
     connect();

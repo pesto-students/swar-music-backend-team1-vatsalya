@@ -1,24 +1,25 @@
 import express from "express";
 import { createUser,updateUser, getUserById, getAllUser, deleteUser} from "../controller/UsersController.js";
+import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 
 const userrouter = express.Router();
 
-userrouter.get("/checkauthentication",(req, res) =>{
+userrouter.get("/checkauthentication",verifyToken,(req, res) =>{
     res.send("You are logged in!");
 })
 
-userrouter.post("/",createUser);
+userrouter.post("/",verifyUser,createUser);
 
 // UPDATE
-userrouter.put("/:id",updateUser);
+userrouter.put("/:id",verifyUser,updateUser);
 
 //DELETE
-userrouter.delete("/:id",deleteUser);
+userrouter.delete("/:id",verifyUser,deleteUser);
 
 //GET
-userrouter.get("/:id",getUserById);
+userrouter.get("/:id",verifyUser,getUserById);
 
 //GET ALL
-userrouter.get("/",getAllUser);
+userrouter.get("/",verifyAdmin,getAllUser);
 
 export default userrouter;
