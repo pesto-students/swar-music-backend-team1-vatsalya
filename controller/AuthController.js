@@ -11,6 +11,7 @@ export const register = async(req, res, next) =>{
             username: req.body.username,
             email: req.body.email,
             password: hash,
+            gender:req.body.gender
         })
         await newUser.save();
         res.status(200).send("User has been created");
@@ -29,7 +30,10 @@ export const login = async(req, res, next) =>{
         if(!isPassword){
             return next(createError(404,"Wrong password or username!"))}
         
-        const token = jwt.sign({id:user._id, isAdmin: user.isAdmin, username: user.username}, process.env.JWT);
+        const token = jwt.sign({id:user._id, isAdmin: user.isAdmin, username: user.username}, process.env.JWT, {
+            expiresIn: '2hr'
+ 
+       });
         res.send(token);
     }catch(err){
         next(err);

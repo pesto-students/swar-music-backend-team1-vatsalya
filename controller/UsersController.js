@@ -1,4 +1,5 @@
 import Users from "../models/Users.js";
+import { createError } from "../utils/error/error.js";
 
 export const createUser = async(req, res, next) =>{
     const newUser = new Users(req.body);
@@ -8,7 +9,6 @@ export const createUser = async(req, res, next) =>{
     }catch(err){
         next(err);
     }
-    res.send(savedUser);
 }
 
 export const updateUser = async(req, res, next) =>{
@@ -37,7 +37,13 @@ export const getUserById = async(req, res, next) =>{
 export const getAllUser = async(req, res, next) =>{
     try{
         const User =  await Users.find();
-         res.status(200).json(User);
+        res.status(200).json(User);
+        // if(req.user.isAdmin){
+        //     const User =  await Users.find();
+        //     res.status(200).json(User);
+        // }else{
+        //     return next(createError(403, "You are forbidden!"));
+        // }
      }catch(err){
          next(err);
      }

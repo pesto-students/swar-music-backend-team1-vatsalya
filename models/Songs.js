@@ -1,36 +1,27 @@
 import mongoose from "mongoose";
 const {Scheme} = mongoose;
 
-const UsersSchmema = new mongoose.Schema({
-    username:{
+const SongsSchmema = new mongoose.Schema({
+    name:{
         type:String,
         required:true,
         unique:true
     },
-    email:{
+    language:{
         type:String,
         required: true
     },
-    password:{
+    artist:{
         type:String,
         required: true
     },
-    DOB:{
-        type: Date,
-        required:false
-    },
-    isAdmin: {
+    isLiked: {
         type: Boolean,
         default: false,
     },
-    isPaid: {
-        type: Boolean,
-        default: false,
-    },
-    gender: {
+    bucket:{
         type:String,
-        required:false
     }
 },
 {timestamps:true});
-export default mongoose.model("Users", UsersSchmema);
+export default mongoose.model("Songs", SongsSchmema);
