@@ -7,12 +7,16 @@ export const register = async(req, res, next) =>{
     try{
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
+        const hash1 = bcrypt.hashSync(req.body.confirmPassword, salt);
         const newUser = new Users({
             username: req.body.username,
             email: req.body.email,
             password: hash,
-            gender:req.body.gender
+            confirmPassword:hash1
         })
+        if(hash != hash1){
+            return next(createError(404,"Password does not match!"));
+        }
         await newUser.save();
         res.status(200).send("User has been created");
     }catch(err){

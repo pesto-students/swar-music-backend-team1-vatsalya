@@ -15,12 +15,20 @@ const UsersSchmema = new mongoose.Schema({
         type:String,
         required: true
     },
+    confirmPassword:{
+        type:String,
+        required: true
+    },
     DOB:{
         type: Date,
         required:false
     },
     isAdmin: {
         type: Boolean,
+        default: false,
+    },
+    playlists: {
+        type: Array,
         default: false,
     },
     isPaid: {

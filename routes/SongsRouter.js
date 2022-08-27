@@ -1,5 +1,5 @@
 import express from "express";
-import { createSong, getSongById, getAllSongs, deleteSong, retrieveURL} from "../controller/SongsController.js";
+import { createSong, getSongById, getAllSongs, deleteSong, retrieveURL, getAllSongByName, postAllSongsByPlaylist} from "../controller/SongsController.js";
 import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 
 const songsrouter = express.Router();
@@ -20,6 +20,12 @@ songsrouter.get("/:id",verifyUser,getSongById);
 //GET ALL
 songsrouter.get("/",verifyAdmin,getAllSongs);
 
+//GET ALL SONGS BY PLAYLIST
+songsrouter.post("/post/playlist",verifyUser,postAllSongsByPlaylist);
+
 songsrouter.put("/upload/retrieve",retrieveURL);
+
+//GET ALL BY NAME
+songsrouter.get("/name/:name",getAllSongByName);
 
 export default songsrouter;
