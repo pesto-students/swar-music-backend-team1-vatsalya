@@ -102,6 +102,15 @@ export const getAllSongByName = async(req, res, next) =>{
      }
 }
 
+export const countAllSongs = async(req, res, next) =>{
+    try{
+        const allSongs = await Songs.count();
+        res.status(200).json(allSongs);
+    }catch(err){
+        next(err);
+    }
+}
+
 const getUrlFromBucket =(fileName) => {
     return `https://swar-app.s3.ap-south-1.amazonaws.com/${fileName}`
 };

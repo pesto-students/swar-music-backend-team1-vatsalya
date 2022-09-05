@@ -38,6 +38,14 @@ const UsersSchmema = new mongoose.Schema({
     gender: {
         type:String,
         required:false
+    },
+    feedBack: {
+        type:String,
+        required:false
+    },
+    country:{
+        type:String,
+        required:true
     }
 },
 {timestamps:true});

@@ -7,6 +7,8 @@ import cookieParser from "cookie-parser";
 import songsrouter from "./routes/SongsRouter.js";
 import aws  from "aws-sdk";
 import cors from "cors";
+import audioBooksrouter from "./routes/AudioBooksRoute.js";
+import poadCastRouter from "./routes/PoadCastsRouter.js";
 
 
 
@@ -46,7 +48,8 @@ app.use(express.json());
 app.use("/api/users",userrouter)
 app.use("/api/auth",authrouter)
 app.use("/api/songs",songsrouter)
-  
+app.use("/api/audioBooks",audioBooksrouter)
+app.use("/api/poadcast",poadCastRouter)
 app.use((err,req,res,next) =>{
     const errorMessage = err.message || "Hello error from handler";
     const errorStatus = err.status || 500;
