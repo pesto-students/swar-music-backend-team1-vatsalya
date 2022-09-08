@@ -32,10 +32,10 @@ songsrouter.get("/name/:name",verifyUser,getAllSongByName);
 songsrouter.get("/count/all",verifyUser,countAllSongs);
 
 //CREATE PLAYLIST
-songsrouter.post("/post/playlist",createPlayList);
+songsrouter.post("/post/playlist",verifyUser,createPlayList);
 
 //DELETE PLAYLIST
-songsrouter.delete("/playList/:id",deletePlayList);
+songsrouter.delete("/playList/:id",verifyUser,deletePlayList);
 
 //GET ALL PLAYLIST
 songsrouter.get("/get/playlist/:id",verifyUser,getAllPlayListByUserId);
