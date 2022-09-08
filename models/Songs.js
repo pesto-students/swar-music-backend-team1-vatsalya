@@ -19,6 +19,10 @@ const SongsSchmema = new mongoose.Schema({
         type:String,
         required: true
     },
+    playList_id:{
+        type:String,
+        required: false
+    },
     isLiked: {
         type: Boolean,
         default: false,

@@ -1,19 +1,105 @@
 import Songs from "../models/Songs.js";
-import aws  from "aws-sdk";
-import crypto from "crypto"
 import {s3} from "../index.js";
-import { promisify } from "util";
 import Users from "../models/Users.js";
+import PlayList from "../models/PlayList.js";
+import PlayListSongs from "../models/PlayListSongs.js";
 
 
 const bucketName = "swar-app"
-const randomBytes = promisify(crypto.randomBytes)
+
 export const createSong = async(req, res, next) =>{
     console.log("hello");
     const newSongs = new Songs(req.body);
     try{
         const savedSong = await newSongs.save();
         res.status(200).json(savedSong);
+    }catch(err){
+        next(err);
+    }
+}
+
+export const createPlayList = async(req, res, next) =>{
+    console.log("This is the PlayList");
+    const newPlayList = new PlayList(req.body);
+    try{
+        const savedPlayList = await newPlayList.save();
+        res.status(200).json(savedPlayList);
+    }catch(err){
+        next(err);
+    }
+}
+
+export const deletePlayList= async(req, res, next) =>{
+    try{
+        await PlayList.findByIdAndDelete(
+            req.params.id);
+        res.status(200).json("PlayList Has been deleted");
+    }catch(err){
+        next(err);
+    }
+}
+
+export const createPlayListSongs = async(req, res, next) =>{
+    console.log("Create all the playList songs");
+    const newPlayListSongs = new PlayListSongs(req.body);
+    try{
+        const savedPlayList = await newPlayListSongs.save();
+        res.status(200).json(savedPlayList);
+    }catch(err){
+        next(err);
+    }
+}
+
+export const addSongToPlayList = async(req,res,next) =>{
+    try{
+        return await PlayList.findByIdAndUpdate(
+            {_id: req.params.id}, {$push: {songs : req.body}},
+            {new: true}).then(function(dbPlayList){
+             console.log("dbPlayList---")
+             console.log(dbPlayList)
+             res.json(dbPlayList);
+            })
+       
+     }catch(err){
+        next(err);
+    }
+  
+};
+
+export const getSongsByPlayList = async(req,res,next) =>{
+    try{
+        let playListSongs = [];
+        const playList = await PlayList.findById(req.params.id);
+        console.log("playList-------")
+        console.log(playList.songs)
+        for(let i = 0; i < playList.songs.length; i++){
+            const songs = await Songs.findById(playList.songs[i]);
+            playListSongs.push(songs)
+        }
+        console.log(playListSongs);
+        const playLists = onlyUnique(playListSongs);
+        res.json(playLists);
+     }catch(err){
+        next(err);
+    }
+  
+};
+
+export const getAllPlayListByUserId = async(req, res, next) =>{
+    console.log("This is the PlayList");
+    try{
+        const getPlayList = await PlayList.find({'user_id':req.params.id});
+        res.status(200).json(getPlayList);
+    }catch(err){
+        next(err);
+    }
+}
+
+export const getAllSongsByPlayListId = async(req, res, next) =>{
+    console.log("This is the PlayList");
+    try{
+        const getAllSongsByPlayList = await Songs.find({'song_id':req.params.song_id, 'id': req.params.id});
+        res.status(200).json(getAllSongsByPlayList);
     }catch(err){
         next(err);
     }
@@ -114,5 +200,8 @@ export const countAllSongs = async(req, res, next) =>{
 const getUrlFromBucket =(fileName) => {
     return `https://swar-app.s3.ap-south-1.amazonaws.com/${fileName}`
 };
-//https://swar-app.s3.ap-south-1.amazonaws.com/56d87377147365cbbd96e44d00847daa
-//https://swar-app.s3.ap-south-1.amazonaws.com/Kesari01
+
+const onlyUnique = (array) => {
+    return array.filter((v,i,a)=>a.findIndex(v2=>(JSON.stringify(v2) === JSON.stringify(v)))===i)
+
+  }

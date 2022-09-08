@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-const {Scheme} = mongoose;
+const {Schema} = mongoose;
 
-const UsersSchmema = new mongoose.Schema({
+const UsersSchema = new mongoose.Schema({
     username:{
         type:String,
         required:true,
@@ -27,10 +27,6 @@ const UsersSchmema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    playlists: {
-        type: Array,
-        default: false,
-    },
     isPaid: {
         type: Boolean,
         default: false,
@@ -49,4 +45,4 @@ const UsersSchmema = new mongoose.Schema({
     }
 },
 {timestamps:true});
-export default mongoose.model("Users", UsersSchmema);
+export default mongoose.model("Users", UsersSchema);
