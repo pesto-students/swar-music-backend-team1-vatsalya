@@ -4,7 +4,6 @@ const {Scheme} = mongoose;
 const PlayListSchema = new mongoose.Schema({
     name:{
         type:String,
-        required:true,
         unique:true
     },
     user_id:{

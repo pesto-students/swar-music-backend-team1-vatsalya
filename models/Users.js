@@ -41,7 +41,6 @@ const UsersSchema = new mongoose.Schema({
     },
     country:{
         type:String,
-        required:true
     }
 },
 {timestamps:true});
