@@ -20,7 +20,7 @@ songsrouter.delete("/:id",verifyUser,deleteSong);
 songsrouter.get("/:id",verifyUser,getSongById);
 
 //GET ALL
-songsrouter.get("/",verifyAdmin,getAllSongs);
+songsrouter.get("/",verifyUser,getAllSongs);
 
 //UPLOAD RETRIEVE
 songsrouter.put("/upload/retrieve",retrieveURL);

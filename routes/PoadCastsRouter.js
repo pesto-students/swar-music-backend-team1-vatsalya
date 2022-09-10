@@ -15,7 +15,7 @@ poadCastRouter.delete("/:id",verifyUser,deletePoadCasts);
 poadCastRouter.get("/:id",verifyUser,getPoadCastsById);
 
 //GET ALL
-poadCastRouter.get("/",verifyAdmin,getAllPoadCasts);
+poadCastRouter.get("/",verifyUser,getAllPoadCasts);
 
 
 poadCastRouter.put("/upload/retrieve",retrieveURL);
