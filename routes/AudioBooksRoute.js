@@ -15,7 +15,7 @@ audioBooksrouter.delete("/:id",verifyUser,deleteAudioBooks);
 audioBooksrouter.get("/:id",verifyUser,getAudioBooksById);
 
 //GET ALL
-audioBooksrouter.get("/",verifyUser,getAllAudioBooks);
+audioBooksrouter.get("/",getAllAudioBooks);
 
 
 audioBooksrouter.put("/upload/retrieve",retrieveURL);
