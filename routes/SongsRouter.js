@@ -50,7 +50,7 @@ songsrouter.get("/get/songs/playlist/:song_id/:id",verifyUser,getAllSongsByPlayL
 songsrouter.post("/create/playlist/songs",verifyUser,createPlayListSongs);
 
 //GET ALL PLAYLIST BY SONGS
-songsrouter.get("/find/playlist/songs/:id",verifyUser,getSongsByPlayList);
+songsrouter.get("/find/playlist/songs/:id",getSongsByPlayList);
 
 //GET ALL PLAYLIST BY SONGS
 songsrouter.post("/add/playlist/songs/:id",addSongToPlayList);
