@@ -35,10 +35,10 @@ songsrouter.get("/count/all",verifyUser,countAllSongs);
 songsrouter.post("/post/playlist",verifyUser,createPlayList);
 
 //UPDATE PLAYLIST
-songsrouter.put("/update/playlist/:id",verifyUser,updatePlayList);
+songsrouter.put("/update/playlist/:id",updatePlayList);
 
 //DELETE PLAYLIST
-songsrouter.delete("/playList/:id",verifyUser,deletePlayList);
+songsrouter.delete("/playList/:id",deletePlayList);
 
 //GET ALL PLAYLIST
 songsrouter.get("/get/playlist/:id",verifyUser,getAllPlayListByUserId);
