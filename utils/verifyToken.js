@@ -20,7 +20,9 @@ export function verifyToken(req,res,next){
 
 export function verifyUser(req, res,next){
     verifyToken(req,res,next)
-    if(req.user.id === req.params.id || req.user.id === req.params.userId  || req.user.id === req.body.userId || req.user.isAdmin){
+    console.log("------" + req.user.id);
+    console.log("-------" + req.body.user_id);
+    if(req.user.id === req.params.id  || req.user.id === req.body.user_id ||req.user.id === req.body.userId || req.user.isAdmin){
     }else{
         return next(createError(403, "You are forbidden!"));
     }

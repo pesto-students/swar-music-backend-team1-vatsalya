@@ -29,6 +29,6 @@ userrouter.get("/count/all",verifyUser,countAllUsers);
 userrouter.get("/country/count/all",verifyUser,countUsersByCountry);
 
 //Fill FEEDBACK
-userrouter.post("/feedBack/:id",submitFeedBack);
+userrouter.post("/feedBack/:id",verifyUser,submitFeedBack);
 
 export default userrouter;

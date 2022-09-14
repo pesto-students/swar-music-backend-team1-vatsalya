@@ -1,7 +1,7 @@
 import express from "express";
 import { createSong, getSongById, getAllSongs, deleteSong, retrieveURL, getAllSongByName, createPlayList, countAllSongs,getAllPlayListByUserId,
     getAllSongsByPlayListId,
-    createPlayListSongs, addSongToPlayList, getSongsByPlayList, deletePlayList,updatePlayList} from "../controller/SongsController.js";
+    createPlayListSongs, addSongToPlayList, getSongsByPlayList, deletePlayList, updatePlayList} from "../controller/SongsController.js";
 import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 
 const songsrouter = express.Router();
@@ -53,6 +53,6 @@ songsrouter.post("/create/playlist/songs",verifyUser,createPlayListSongs);
 songsrouter.get("/find/playlist/songs/:id",verifyUser,getSongsByPlayList);
 
 //GET ALL PLAYLIST BY SONGS
-songsrouter.post("/add/playlist/songs/:id",verifyUser,addSongToPlayList);
+songsrouter.post("/add/playlist/songs/:id",addSongToPlayList);
 
 export default songsrouter;
