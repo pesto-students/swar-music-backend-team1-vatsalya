@@ -26,7 +26,7 @@ songsrouter.get("/",getAllSongs);
 songsrouter.put("/upload/retrieve",retrieveURL);
 
 //GET ALL BY NAME
-songsrouter.get("/name/:name",verifyUser,getAllSongByName);
+songsrouter.get("/name/:name",getAllSongByName);
 
 //COUNT ALL SONGS
 songsrouter.get("/count/all",verifyUser,countAllSongs);
