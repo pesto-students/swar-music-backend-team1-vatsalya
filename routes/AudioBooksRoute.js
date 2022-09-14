@@ -21,7 +21,7 @@ audioBooksrouter.get("/",getAllAudioBooks);
 audioBooksrouter.put("/upload/retrieve",retrieveURL);
 
 //GET ALL BY NAME
-audioBooksrouter.get("/name/:name",verifyUser,getAllAudioBooksByName);
+audioBooksrouter.get("/name/:name",getAllAudioBooksByName);
 
 //COUNT ALL BY AUDIOBOOKS
 audioBooksrouter.get("/count/all",verifyUser,countAllAudioBooks);
