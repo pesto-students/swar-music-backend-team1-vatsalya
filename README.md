@@ -63,7 +63,7 @@ Install my-project with npm
 
 ## Authors
 
-- [Himanshu Vansal](https://github.com/himanshuvansal01) -
+- [Himanshu Vansal](https://github.com/himanshuvansal01)
 - [Shantanu Kale](https://github.com/martianshaan)
 
 ## LICENSE
