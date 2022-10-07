@@ -55,8 +55,6 @@ Install my-project with npm
 
 ## Technology Stack
 
-**Client:** React, Redux, Material UI
-
 **Server:** Node, Express JS, [Herkou](https://swar-music.herokuapp.com/)
 
 **Authentication:** JWT
