@@ -1,7 +1,7 @@
 import express from "express";
 import { createSong, getSongById, getAllSongs, deleteSong, retrieveURL, getAllSongByName, createPlayList, countAllSongs,getAllPlayListByUserId,
     getAllSongsByPlayListId,
-    createPlayListSongs, addSongToPlayList, getSongsByPlayList, deletePlayList} from "../controller/SongsController.js";
+    createPlayListSongs, addSongToPlayList, getSongsByPlayList, deletePlayList, updatePlayList} from "../controller/SongsController.js";
 import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 
 const songsrouter = express.Router();
@@ -20,13 +20,13 @@ songsrouter.delete("/:id",verifyUser,deleteSong);
 songsrouter.get("/:id",verifyUser,getSongById);
 
 //GET ALL
-songsrouter.get("/",verifyAdmin,getAllSongs);
+songsrouter.get("/",getAllSongs);
 
 //UPLOAD RETRIEVE
 songsrouter.put("/upload/retrieve",retrieveURL);
 
 //GET ALL BY NAME
-songsrouter.get("/name/:name",verifyUser,getAllSongByName);
+songsrouter.get("/name/:name",getAllSongByName);
 
 //COUNT ALL SONGS
 songsrouter.get("/count/all",verifyUser,countAllSongs);
@@ -34,8 +34,11 @@ songsrouter.get("/count/all",verifyUser,countAllSongs);
 //CREATE PLAYLIST
 songsrouter.post("/post/playlist",verifyUser,createPlayList);
 
+//UPDATE PLAYLIST
+songsrouter.put("/update/playlist/:id",updatePlayList);
+
 //DELETE PLAYLIST
-songsrouter.delete("/playList/:id",verifyUser,deletePlayList);
+songsrouter.delete("/playList/:id",deletePlayList);
 
 //GET ALL PLAYLIST
 songsrouter.get("/get/playlist/:id",verifyUser,getAllPlayListByUserId);
@@ -47,9 +50,9 @@ songsrouter.get("/get/songs/playlist/:song_id/:id",verifyUser,getAllSongsByPlayL
 songsrouter.post("/create/playlist/songs",verifyUser,createPlayListSongs);
 
 //GET ALL PLAYLIST BY SONGS
-songsrouter.get("/find/playlist/songs/:id",verifyUser,getSongsByPlayList);
+songsrouter.get("/find/playlist/songs/:id",getSongsByPlayList);
 
 //GET ALL PLAYLIST BY SONGS
-songsrouter.post("/add/playlist/songs/:id",verifyUser,addSongToPlayList);
+songsrouter.post("/add/playlist/songs/:id",addSongToPlayList);
 
 export default songsrouter;

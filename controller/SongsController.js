@@ -29,6 +29,17 @@ export const createPlayList = async(req, res, next) =>{
     }
 }
 
+export const updatePlayList = async(req, res, next) =>{
+    try{
+        const playList = await PlayList.findByIdAndUpdate(req.params.id, 
+            {$set: {'name': req.body.name}},
+            {new: true});
+            res.status(200).json(playList)
+    }catch(err){
+        next(err);
+    }
+}
+
 export const deletePlayList= async(req, res, next) =>{
     try{
         await PlayList.findByIdAndDelete(

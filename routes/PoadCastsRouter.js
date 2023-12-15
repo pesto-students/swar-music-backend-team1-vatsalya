@@ -15,13 +15,13 @@ poadCastRouter.delete("/:id",verifyUser,deletePoadCasts);
 poadCastRouter.get("/:id",verifyUser,getPoadCastsById);
 
 //GET ALL
-poadCastRouter.get("/",verifyAdmin,getAllPoadCasts);
+poadCastRouter.get("/",getAllPoadCasts);
 
 
 poadCastRouter.put("/upload/retrieve",retrieveURL);
 
 //GET ALL BY NAME
-poadCastRouter.get("/name/:name",verifyUser,getAllPoadCastsByName);
+poadCastRouter.get("/name/:name",getAllPoadCastsByName);
 
 //COUNT ALL POADCAST
 poadCastRouter.get("/count/all",verifyUser,countAllPoadCast);

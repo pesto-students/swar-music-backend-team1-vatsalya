@@ -1,22 +1,71 @@
-# Pesto Assignments
+# SWAR MUSIC
 
-Welcome to Pesto assignments.
+![Logo](https://swar-app.s3.ap-south-1.amazonaws.com/SwarLogo.png)
 
-## How to solve assignments
+Swar music is a music player, on which users can listen to music,poadcast and audioBooks.On other hand users can create,edit and delete their playlist.
 
-Weekly Assignments will be shared by your mentor or instructor.
+This is the backend server of swar music which is built in nodeJs and Express Js, server is deployed in [heroku](https://swar-music.herokuapp.com/).
 
-Make sure master or main branch is protected and you are not able to push any code directly to master.
+There are two types of users:
 
-- Clone this repo to your local.
-- Checkout to new branch for submission. Suggestion you can name new branch week wise - branch for week 1 assignment can be week1
+- Admin user - Admin will able upload songs,poadcast and audiobooks to s3 bucket
+
+- Client user - Client will able to listen to music,poadcast and audiobooks.Whereas they
+  can also create,edit and delete playlist.
+
+# Table of Contents
+
+1. [Demo](#demo)
+2. [Installation](#installation)
+3. [Technology Stack](#technology-stack)
+4. [Authors](#authors)
+5. [License](#license)
+
+## Demo
+
+[Live Demo](https://swar-music.netlify.app/)
+
+[Backend Server](https://swar-music.herokuapp.com/)
+
+Please Note:
+
+1. We recommend using this app in Google Chrome
+2. Use the app on Laptop/desktop only as of now.
+
+Test Credentials
+
+- For Admin:
+  - Username : SysAdmin7
+  - Password: password-a
+- For User:
+  - Username: TestUser01
+  - Password: test12345
+
+Please Note:
+
+## Installation
+
+Install my-project with npm
 
 ```bash
-git checkout -b week1
+  1.Fork or directly clone this repository to your local machine
+  2.Use the npm install command to install dependencies.
+  3.Once the dependencies are finished installing, use the npm start command inside the root directory to open the app in your local browser of choice
 ```
 
-- Create Assignment week folder in root directory(if it doesn't exist) for eg. for solving week 1 assignment create folder with name "week1".
-- You can create subfolders in main week(week1) folder if required.
-- Add proper readme [(How to Write proper readme](https://meakaakka.medium.com/a-beginners-guide-to-writing-a-kickass-readme-7ac01da88ab3) )in week's folder or subfolder explaining about assignment, how to run assignment and any other instructions.
-- Raise a PR against master and add your mentor as reviewer
-- Resolve PR comments if any and once your mentor approves your PR, Merge it.
+## Technology Stack
+
+**Server:** Node, Express JS, [Herkou](https://swar-music.herokuapp.com/)
+
+**Authentication:** JWT
+
+**Cloud Storage:** AWS S3 bucket
+
+## Authors
+
+- [Himanshu Vansal](https://github.com/himanshuvansal01)
+- [Shantanu Kale](https://github.com/martianshaan)
+
+## LICENSE
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
